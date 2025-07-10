@@ -6,6 +6,7 @@ import connectDB from "./src/config/monog.config.js"
 dotenv.config("./.env");
 
 import short_urlRoute from "./src/routes/short_urlRoute.js"
+import auth_Route from "./src/routes/auth_Route.js";
 import redirect_urlRoute from "./src/routes/redirect_urlRoute.js"
 
 
@@ -18,6 +19,7 @@ app.get("/" , (req , res)=>{
 })
 
 app.use("/api/create" , short_urlRoute);
+app.use("/api/auth" , auth_Route);
 
 app.use("/", redirect_urlRoute);
 

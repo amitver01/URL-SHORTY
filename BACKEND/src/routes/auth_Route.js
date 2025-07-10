@@ -1,0 +1,10 @@
+import express from "express";
+const router=express.Router();
+
+import {register , login} from "../controllers/auth_Controller.js";
+
+
+router.post("/signup" , register );
+router.post("/login" , login);
+
+export default router;
