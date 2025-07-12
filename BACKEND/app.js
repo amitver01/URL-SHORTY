@@ -3,16 +3,22 @@ const app=express();
 import cors from 'cors';
 import dotenv from "dotenv";
 import connectDB from "./src/config/monog.config.js"
-dotenv.config("./.env");
+import cookieParser from 'cookie-parser';
+dotenv.config();
 
 import short_urlRoute from "./src/routes/short_urlRoute.js"
 import auth_Route from "./src/routes/auth_Route.js";
 import redirect_urlRoute from "./src/routes/redirect_urlRoute.js"
 
-
-app.use(cors());
+app.use(cookieParser());
+app.use(cors({
+  origin: 'http://localhost:5173', // your frontend origin
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true,               // allow cookies
+}));
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
+
 
 app.get("/" , (req , res)=>{
     res.send("sherrrrr cheetaha hi bol de ");
