@@ -1,4 +1,4 @@
-import React from 'react';
+
 import AuthForm from '../components/AuthForm';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -8,9 +8,17 @@ const LoginPage = () => {
 
   const handleLogin = async (data) => {
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/login', data);
+      const res = await axios.post("http://localhost:5000/api/auth/login", data, {
+          withCredentials: true,
+        });
       console.log('Login Success:', res.data);
-      navigate('/');
+
+      // Store token in localStorage for Authorization header (if needed)
+      if (res.data.token) {
+        localStorage.setItem('token', res.data.token);
+      }
+
+      navigate('/dashboard');
     } catch (err) {
       console.error('Login Failed:', err.response?.data?.message || err.message);
     }

@@ -12,7 +12,9 @@ const UrlForm = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await axios.post("http://localhost:5000/api/create/", { full_url });
+      const res = await axios.post("http://localhost:5000/api/create/dashboard", { full_url }, {
+        withCredentials: true, // Include cookies in the request
+      });
       setShortUrl(res.data); // expects a short code like "in90jwy"
       setCopied(false);
     } catch (err) {
