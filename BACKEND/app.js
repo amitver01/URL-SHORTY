@@ -9,7 +9,8 @@ dotenv.config();
 import short_urlRoute from "./src/routes/short_urlRoute.js"
 import auth_Route from "./src/routes/auth_Route.js";
 import redirect_urlRoute from "./src/routes/redirect_urlRoute.js"
-
+import analytics_Route from "./src/routes/analytics_Route.js"
+ 
 app.use(cookieParser());
 app.use(cors({
   origin: 'http://localhost:5173', // your frontend origin
@@ -26,6 +27,7 @@ app.get("/" , (req , res)=>{
 
 app.use("/api/create" , short_urlRoute);
 app.use("/api/auth" , auth_Route);
+app.use("/api" , analytics_Route);
 
 app.use("/", redirect_urlRoute);
 
