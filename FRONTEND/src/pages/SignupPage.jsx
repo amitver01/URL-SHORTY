@@ -2,6 +2,7 @@ import React from 'react';
 import AuthForm from '../components/AuthForm';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import Navbar from '../components/NavBar';
 
 const SignupPage = () => {
   const navigate = useNavigate(); // ✅ move this outside the function
@@ -19,6 +20,7 @@ const SignupPage = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-800 px-4">
       {/* Background Decorations */}
+      <Navbar/>
       <div className="absolute -top-40 -left-40 w-80 h-80 bg-white/10 rounded-full blur-3xl"></div>
       <div className="absolute -bottom-40 -right-40 w-80 h-80 bg-white/10 rounded-full blur-3xl"></div>
 
