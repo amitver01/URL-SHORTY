@@ -1,11 +1,14 @@
 
+import React from 'react';
 import AuthForm from '../components/AuthForm';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 import Navbar from '../components/NavBar';
 
 const LoginPage = () => {
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   const handleLogin = async (data) => {
     try {
@@ -14,9 +17,9 @@ const LoginPage = () => {
         });
       console.log('Login Success:', res.data);
 
-      // Store token in localStorage for Authorization header (if needed)
+      // Store token in localStorage and update auth context
       if (res.data.token) {
-        localStorage.setItem('token', res.data.token);
+        login(res.data.token); // This will handle both localStorage and context state
       }
 
       navigate('/dashboard');
