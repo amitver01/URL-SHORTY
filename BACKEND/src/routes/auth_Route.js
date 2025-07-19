@@ -1,12 +1,13 @@
 import express from "express";
 const router=express.Router();
 
-import {register , login} from "../controllers/auth_Controller.js";
+import {register , login, logout} from "../controllers/auth_Controller.js";
 import { verifyToken } from "../middleware/authMiddleware.js";
 
 
 router.post("/signup" , register );
 router.post("/login" , login);
+router.post("/logout" , logout);
 
 router.get("/test-cookie", (req, res) => {
   console.log("Cookies received at /test-cookie:", req.cookies);
